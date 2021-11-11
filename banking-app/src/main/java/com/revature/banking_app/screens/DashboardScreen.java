@@ -18,7 +18,6 @@ public class DashboardScreen extends Screen {
     @Override
     public void render() throws Exception {
 
-        // TODO Implement user options and make this screen loop until the user logs out.
         AppUser sessionUser = userService.getSessionUser();
         if (sessionUser == null) {
             System.out.println("You are not currently logged in! Navigating to Login Screen");
@@ -30,8 +29,8 @@ public class DashboardScreen extends Screen {
             System.out.printf("\n%s's Dashboard\n", sessionUser.getFirstName());
 
             String menu = "1) View/edit my profile information\n" +
-                    "2) View/create study sets\n" +
-                    "3) View/create flashcards\n" +
+                    "2) View/create an account\n" +
+                    "3) Deposit/Withdraw from an account \n" +
                     "4) Logout\n" +
                     "> ";
 
@@ -44,10 +43,10 @@ public class DashboardScreen extends Screen {
                     System.out.println("View/edit profile selected");
                     break;
                 case "2":
-                    System.out.println("View/edit study sets selected");
+                    System.out.println("View/create an account");
                     break;
                 case "3":
-                    System.out.println("View/edit flashcards selected");
+                    System.out.println("Deposit/Withdraw from an account");
                     break;
                 case "4":
                     userService.logout();

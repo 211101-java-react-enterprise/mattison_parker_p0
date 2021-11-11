@@ -7,7 +7,6 @@ import com.revature.banking_app.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
-// TODO: Implement me!
 public class LoginScreen extends Screen {
 
     private final UserService userService;
