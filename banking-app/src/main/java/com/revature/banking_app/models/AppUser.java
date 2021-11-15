@@ -97,17 +97,6 @@ public class AppUser extends Object {
         this.password = password;
     }
 
-    public String toFileString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(id).append(":")
-               .append(firstName).append(":")
-               .append(lastName).append(":")
-               .append(email).append(":")
-               .append(username).append(":")
-               .append(password);
-        return builder.toString();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

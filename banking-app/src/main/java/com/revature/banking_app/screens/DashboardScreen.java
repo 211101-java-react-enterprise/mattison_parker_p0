@@ -44,7 +44,8 @@ public class DashboardScreen extends Screen {
                     router.navigate("/profile");
                     break;
                 case "2":
-                    System.out.println("\nView/create an account");
+                    System.out.println("\nView/create an account selected");
+                    router.navigate("/accounts");
                     break;
                 case "3":
                     System.out.println("\nDeposit/Withdraw from an account");
