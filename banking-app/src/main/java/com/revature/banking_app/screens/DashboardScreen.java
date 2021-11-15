@@ -40,13 +40,14 @@ public class DashboardScreen extends Screen {
 
             switch (userSelection) {
                 case "1":
-                    System.out.println("View/edit profile selected");
+                    System.out.println("\nView/edit profile selected");
+                    router.navigate("/profile");
                     break;
                 case "2":
-                    System.out.println("View/create an account");
+                    System.out.println("\nView/create an account");
                     break;
                 case "3":
-                    System.out.println("Deposit/Withdraw from an account");
+                    System.out.println("\nDeposit/Withdraw from an account");
                     break;
                 case "4":
                     userService.logout();

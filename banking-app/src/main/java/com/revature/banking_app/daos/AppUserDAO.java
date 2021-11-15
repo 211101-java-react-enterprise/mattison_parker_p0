@@ -139,6 +139,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
 
     @Override
     public boolean update(AppUser updatedObj) {
+        System.out.println("DEMO: Update Ran!");
         return false;
     }
 
