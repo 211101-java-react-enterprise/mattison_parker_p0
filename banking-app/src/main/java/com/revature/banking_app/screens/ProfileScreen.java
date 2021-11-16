@@ -22,7 +22,7 @@ public class ProfileScreen extends Screen{
         AppUser sessionUser = userService.getSessionUser();
         boolean isInProfile = true;
         while(isInProfile) {
-            System.out.println("1) View your profile" +
+            System.out.print("1) View your profile" +
                     "\n2) Edit your profile information" +
                     "\n3) Return to your dashboard" +
                     "\n> ");

@@ -1,5 +1,6 @@
 package com.revature.banking_app.models;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Account extends Object{
@@ -7,15 +8,15 @@ public class Account extends Object{
     private String id;
     private String accountName;
     private String accountType;
-    private double balance;
+    private BigDecimal balance;
 
-    public Account(String accountName, String accountType, double balance) {
+    public Account(String accountName, String accountType, BigDecimal balance) {
         this.accountName = accountName;
         this.accountType = accountType;
         this.balance = balance;
     }
 
-    public Account(String id, String accountName, String accountType, double balance) {
+    public Account(String id, String accountName, String accountType, BigDecimal balance) {
         this.id = id;
         this.accountName = accountName;
         this.accountType = accountType;
@@ -46,11 +47,11 @@ public class Account extends Object{
         this.accountType = accountType;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

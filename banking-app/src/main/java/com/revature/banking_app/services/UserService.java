@@ -6,6 +6,8 @@ import com.revature.banking_app.exceptions.InvalidRequestException;
 import com.revature.banking_app.exceptions.ResourcePersistenceException;
 import com.revature.banking_app.models.AppUser;
 
+import java.math.BigDecimal;
+
 public class UserService {
 
     private final AppUserDAO userDAO ;
@@ -30,13 +32,6 @@ public class UserService {
         boolean emailAvailable = userDAO.findUserByEmail(newUser.getEmail()) == null;
 
         if (!usernameAvailable || !emailAvailable) {
-//            if (!usernameAvailable && emailAvailable) {
-//                throw new ResourcePersistenceException("The provided username was already taken in the datasource!");
-//            } else if (usernameAvailable) {
-//                throw new ResourcePersistenceException("The provided email was already taken in the datasource!");
-//            } else {
-//                throw new ResourcePersistenceException("The provided username and email was already taken in the datasource!");
-//            }
             String msg = "The values provided for the following fields are already taken by other users:";
             if (!usernameAvailable) msg = msg + "\n\t- username";
             if (!emailAvailable) msg = msg + "\n\t- email";
@@ -66,6 +61,11 @@ public class UserService {
         }
 
         sessionUser = authenticatedUser;
+
+    }
+
+    public void createNewAccount(String accountName, String accountType, BigDecimal balance){
+        //TODO Validate Given Account Information Before Passing On To The AppUserDAO
 
     }
 

@@ -1,5 +1,8 @@
 package com.revature.banking_app.models;
 
+import com.revature.banking_app.screens.Screen;
+import com.revature.banking_app.util.LinkedList;
+
 import java.util.Objects;
 
 /*
@@ -30,6 +33,7 @@ public class AppUser extends Object {
     private String email;
     private String username;
     private String password;
+    private LinkedList<Account> accounts = new LinkedList<>();
 
     public AppUser(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
@@ -97,6 +101,14 @@ public class AppUser extends Object {
         this.password = password;
     }
 
+    public LinkedList<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,5 +128,6 @@ public class AppUser extends Object {
                 ", password='" + password + '\'' +
                 '}';
     }
+
 
 }
