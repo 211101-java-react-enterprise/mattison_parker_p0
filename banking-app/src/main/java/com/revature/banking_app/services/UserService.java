@@ -1,9 +1,11 @@
 package com.revature.banking_app.services;
 
+import com.revature.banking_app.daos.AccountDAO;
 import com.revature.banking_app.daos.AppUserDAO;
 import com.revature.banking_app.exceptions.AuthenticationException;
 import com.revature.banking_app.exceptions.InvalidRequestException;
 import com.revature.banking_app.exceptions.ResourcePersistenceException;
+import com.revature.banking_app.models.Account;
 import com.revature.banking_app.models.AppUser;
 
 import java.math.BigDecimal;
@@ -11,10 +13,12 @@ import java.math.BigDecimal;
 public class UserService {
 
     private final AppUserDAO userDAO ;
+    private final AccountDAO accountDAO;
     private AppUser sessionUser;
 
-    public UserService(AppUserDAO userDAO) {
+    public UserService(AppUserDAO userDAO, AccountDAO accountDAO) {
         this.userDAO = userDAO;
+        this.accountDAO = accountDAO;
         this.sessionUser = null;
     }
 
@@ -64,9 +68,19 @@ public class UserService {
 
     }
 
-    public void createNewAccount(String accountName, String accountType, BigDecimal balance){
+    public boolean createNewAccount(Account newAccount){
         //TODO Validate Given Account Information Before Passing On To The AppUserDAO
+        if(!isAccountValid(newAccount)){
+            throw new InvalidRequestException("Invalid account data provided!");
+        }
 
+        Account account = accountDAO.save(newAccount);
+
+        if (account == null) {
+            throw new ResourcePersistenceException("The account could not be persisted to the datasource!");
+        }
+
+        return true;
     }
 
     public void logout() {
@@ -84,6 +98,13 @@ public class UserService {
         if (user.getEmail() == null || user.getEmail().trim().equals("")) return false;
         if (user.getUsername() == null || user.getUsername().trim().equals("")) return false;
         return user.getPassword() != null && !user.getPassword().trim().equals("");
+    }
+
+    public boolean isAccountValid(Account account){
+        if(account == null) return false;
+        if(account.getAccountName() == null || account.getAccountName().trim().equals("")) return false;
+        if(account.getAccountType() == null || account.getAccountType().trim().equals("")) return false;
+        return account.getBalance() != null;
     }
 
 }

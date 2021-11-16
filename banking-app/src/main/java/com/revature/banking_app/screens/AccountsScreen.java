@@ -36,6 +36,7 @@ public class AccountsScreen extends Screen{
                 for (int i = 0; i < accounts.size(); i++) {
                     Account account = accounts.get(i);
 
+                    //TODO Format Balance to display in currency form
                     System.out.println(String.format(account.getAccountName() + " : " + account.getAccountType() + " | " + account.getBalance()));
                 }
                 System.out.print("\n1) Add an account" +
@@ -88,6 +89,7 @@ public class AccountsScreen extends Screen{
         startingBalance = new BigDecimal(consoleReader.readLine());
 
         Account newAccount = new Account(accountName, accountType, startingBalance);
+        userService.createNewAccount(newAccount);
         sessionUser.addAccount(newAccount);
     }
 }

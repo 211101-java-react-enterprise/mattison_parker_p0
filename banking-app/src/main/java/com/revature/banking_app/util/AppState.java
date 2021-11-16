@@ -1,5 +1,6 @@
 package com.revature.banking_app.util;
 
+import com.revature.banking_app.daos.AccountDAO;
 import com.revature.banking_app.daos.AppUserDAO;
 import com.revature.banking_app.screens.*;
 import com.revature.banking_app.services.UserService;
@@ -19,7 +20,8 @@ public class AppState {
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
         AppUserDAO userDAO = new AppUserDAO();
-        UserService userService = new UserService(userDAO);
+        AccountDAO accountDAO = new AccountDAO();
+        UserService userService = new UserService(userDAO, accountDAO);
         router.addScreen(new WelcomeScreen(consoleReader, router));
         router.addScreen(new RegisterScreen(consoleReader, router, userService));
         router.addScreen(new LoginScreen(consoleReader, router, userService));
