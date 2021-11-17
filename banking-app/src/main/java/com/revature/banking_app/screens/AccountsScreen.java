@@ -37,7 +37,7 @@ public class AccountsScreen extends Screen{
                     Account account = accounts.get(i);
 
                     //TODO Format Balance to display in currency form
-                    System.out.println(String.format(account.getAccountName() + " : " + account.getAccountType() + " | " + account.getBalance()));
+                    System.out.println(String.format(account.getAccountName() + " : " + account.getAccountType() + " | $" + account.getBalance()));
                 }
                 System.out.print("\n1) Add an account" +
                         "\n2) Return to your dashboard" +
